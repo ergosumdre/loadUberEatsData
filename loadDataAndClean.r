@@ -1,4 +1,4 @@
-loadAllCSV <- function(dir){
+loadAllCSV <- function(){
   dir = list.files(pattern="*.csv")
   df <- do.call(rbind.fill,lapply(dir,read.csv))
   df[,7] <- as.numeric(gsub("[\\$,]", "", df[,7]))
@@ -18,5 +18,3 @@ loadAllCSV <- function(dir){
   df[,14][is.na(df[,14])] <- 0
   df
 }
-
-uberDF <- loadAllCSV("/Users/dre/Downloads/uberRecords")
